@@ -1,3 +1,7 @@
+import 'package:fcai/screens/add_contact.dart';
+import 'package:fcai/screens/home.dart';
+import 'package:fcai/screens/new_page.dart';
+import 'package:fcai/widgets/our_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +19,7 @@ class _MyAppState extends State<MyApp> {
   String name = 'Rana';
   int counter = 0;
   Color color = Colors.white;
-  List<String> nameList = ['mohamed', 'ahmed', 'rana', 'safa'];
+  List list = [];
 
   click(num){
     setState(() {
@@ -26,30 +30,12 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-          backgroundColor: color,
-          body: ListView.builder(
-            itemCount: nameList.length,
-            itemBuilder: (context, index){
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  width: double.infinity,
-                  height: 300,
-                  color: Colors.green,
-                  child: Center(
-                    child: Text(
-                      nameList[index],
-                      style: TextStyle(
-                          fontSize: 30
-                      ),
-                    ),
-                  ),
-                ),
-              );
-            },
-          )
-      ),
+      home: Home(),
+      routes: {
+        'home': (context) => Home(),
+        'newPage': (context) => NewPage(),
+        'addContact': (context) => AddContact(),
+      },
     );
   }
 }
