@@ -1,4 +1,7 @@
+import 'package:fcai/providers/info_provider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class NewPage extends StatefulWidget {
   const NewPage({Key? key}) : super(key: key);
@@ -31,17 +34,23 @@ class _NewPageState extends State<NewPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'New Page',
+              Provider.of<InfoProvider>(context).contact.name!,
               style: TextStyle(
                 fontSize: 40,
               ),
             ),
             IconButton(
               onPressed: (){
-                Navigator.pop(context);
+                Provider.of<InfoProvider>(context, listen: false).changeName('7mada');
               },
-              icon: Icon(Icons.arrow_back, size: 40,),
-            )
+              icon: Icon(Icons.ac_unit_sharp),
+            ),
+            IconButton(
+              onPressed: (){
+                Navigator.pushNamed(context, 'page3');
+              },
+              icon: Icon(Icons.arrow_forward_ios),
+            ),
           ],
         ),
       ),
